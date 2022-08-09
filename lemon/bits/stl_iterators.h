@@ -12,12 +12,15 @@ namespace lemon {
   ///
   /// This template makes an STL iterator from a Lemon iterator
   /// by adding the missing features.
-  /// It inherits from \c std::iterator to make \c iterator_concept work
-  /// (so that STL algorithms work).
   /// \c T should be the lemon iterator to be decorated.
   template<class T>
-  struct LemonItWrapper
-      : public T, public std::iterator<std::input_iterator_tag, T> {
+  struct LemonItWrapper : public T
+  {
+    using iterator_category = std::input_iterator_tag;
+    using value_type = T;
+    using difference_type = std::ptrdiff_t;
+    using pointer = T*;
+    using reference = T&;
 
     LemonItWrapper(const T &x) : T(x) {}
 
