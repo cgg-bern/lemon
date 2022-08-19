@@ -55,6 +55,8 @@ IF(LEMON_HAVE_SOPLEX)
 ENDIF()
 
 ADD_LIBRARY(lemon ${LEMON_SOURCES})
+ADD_LIBRARY(lemon::lemon ALIAS lemon)
+
 set_property(TARGET lemon PROPERTY POSITION_INDEPENDENT_CODE ON)
 target_include_directories(lemon INTERFACE "${PROJECT_SOURCE_DIR}")
 target_include_directories(lemon INTERFACE "${PROJECT_BINARY_DIR}")
