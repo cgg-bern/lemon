@@ -35,6 +35,7 @@
 // C4996: 'function': was declared deprecated
 
 #include <lemon/config.h>
+#include<lemon/export.h>
 
 #ifdef _MSC_VER
 #pragma warning( disable : 4250 4267 4355 4503 4800 4996 )
@@ -74,6 +75,7 @@ namespace lemon {
 #ifdef LEMON_ONLY_TEMPLATES
   const Invalid INVALID = Invalid();
 #else
+  LEMON_EXPORT
   extern const Invalid INVALID;
 #endif
 

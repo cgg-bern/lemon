@@ -20,22 +20,27 @@
 #define LEMON_BITS_WINDOWS_H
 
 #include <lemon/config.h>
+#include <lemon/export.h>
 #include <string>
 
 namespace lemon {
   namespace bits {
+    LEMON_EXPORT
     void getWinProcTimes(double &rtime,
                          double &utime, double &stime,
                          double &cutime, double &cstime);
+    LEMON_EXPORT
     std::string getWinFormattedDate();
+    LEMON_EXPORT
     int getWinRndSeed();
 
-    class WinLock {
+
+    class LEMON_EXPORT WinLock {
     public:
       WinLock();
       ~WinLock();
       void lock();
-      void unlock();\
+      void unlock();
     private:
       void *_repr;
     };
