@@ -266,10 +266,18 @@ ELSEIF(WIN32)
   )
 ENDIF()
 
+
+
 CONFIGURE_FILE(
   ${PROJECT_SOURCE_DIR}/cmake/version.cmake.in
   ${PROJECT_BINARY_DIR}/cmake/version.cmake
   @ONLY
+)
+
+install(TARGETS lemon EXPORT lemonTargets)
+install(EXPORT lemonTargets
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/lemon"
+    NAMESPACE lemon::
 )
 
 SET(ARCHIVE_BASE_NAME ${CMAKE_PROJECT_NAME})
