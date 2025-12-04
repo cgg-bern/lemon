@@ -249,24 +249,11 @@ IF(${CMAKE_SOURCE_DIR} STREQUAL ${PROJECT_SOURCE_DIR})
   ADD_SUBDIRECTORY(test)
 ENDIF()
 
-CONFIGURE_FILE(
-  ${PROJECT_SOURCE_DIR}/cmake/LEMONConfig.cmake.in
-  ${PROJECT_BINARY_DIR}/cmake/LEMONConfig.cmake
-  @ONLY
+include(GNUInstallDirs)
+
+install( FILES cmake/lemonConfig.cmake
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/lemon
 )
-IF(UNIX)
-  INSTALL(
-    FILES ${PROJECT_BINARY_DIR}/cmake/LEMONConfig.cmake
-    DESTINATION share/lemon/cmake
-  )
-ELSEIF(WIN32)
-  INSTALL(
-    FILES ${PROJECT_BINARY_DIR}/cmake/LEMONConfig.cmake
-    DESTINATION cmake
-  )
-ENDIF()
-
-
 
 CONFIGURE_FILE(
   ${PROJECT_SOURCE_DIR}/cmake/version.cmake.in
